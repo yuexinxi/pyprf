@@ -148,3 +148,7 @@ Please use the [github issues](https://github.com/ingo-m/pyprf/issues) for quest
 
 ### License
 The project is licensed under [GNU General Public License Version 3](http://www.gnu.org/licenses/gpl.html).
+
+### Special Note for this fork
+Conda environment highly recommended due to the dependency requirements.
+Installation of Numpy=1.15.1 before installation of pyprf may cause errors. To fix this, simply install a numpy (compatible with the current environment) then the dependencies for pyprf analysis will be uninstalled and reinstalled automatically during `pip install pyprf`
