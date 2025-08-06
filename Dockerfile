@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libsm6 \
     libxrender1 \
     git \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Miniconda
@@ -40,13 +41,13 @@ RUN conda run -n pyprf pip install \
 
 WORKDIR /tmp
 
-RUN git clone https://gitlab.com/skash/pyprf.git
+RUN git clone https://github.com/yuexinxi/pyprf.git
 
 RUN conda run -n pyprf pip install /tmp/pyprf
 
 # Set default shell to activate environment automatically
-SHELL ["conda", "run", "-n", "pyprf", "/bin/bash", "-c"]
+#SHELL ["conda", "run", "-n", "pyprf", "/bin/bash", "-c"]
+RUN echo "source activate pyprf" > ~/.bashrc
 
 # Default command
-CMD ["python"]
-
+ENV PATH=/opt/conda/envs/pyprf/bin:$PATH
